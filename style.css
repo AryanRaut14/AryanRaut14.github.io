@@ -91,9 +91,16 @@
     border-bottom:1px solid var(--line);
     background:rgba(255,255,255,0.015);
   }
-  .dot{ width:10px; height:10px; border-radius:50%; background:#ff003c; box-shadow:0 0 7px rgba(255,0,60,0.55); }
-  .dot:nth-child(2){ background:#fcee0a; box-shadow:0 0 7px rgba(252,238,10,0.55); }
-  .dot:nth-child(3){ background:#00f0ff; box-shadow:0 0 7px rgba(0,240,255,0.55); }
+  .dot{
+    display:block;
+    flex:0 0 10px;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+  }
+  .dot-red{ background:#ff003c; box-shadow:0 0 7px rgba(255,0,60,0.55); }
+  .dot-yellow{ background:#fcee0a; box-shadow:0 0 7px rgba(252,238,10,0.55); }
+  .dot-blue{ background:#00f0ff; box-shadow:0 0 7px rgba(0,240,255,0.55); }
   .term-title{ margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-faint); }
   .term-body{ padding:26px 24px 30px; font-family:var(--mono); font-size:14px; }
   .term-line{ opacity:0; animation:fadeIn .4s ease forwards; margin-bottom:9px; }
