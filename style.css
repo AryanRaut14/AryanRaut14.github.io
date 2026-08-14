@@ -24,6 +24,15 @@
     line-height:1.6;
     overflow-x:hidden;
     min-height:100vh;
+  }
+
+  /* A separate fixed layer keeps the rain still on mobile browsers too. */
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
     background-image:
       radial-gradient(ellipse 900px 500px at 15% -10%, rgba(189,0,255,0.18), transparent),
       radial-gradient(ellipse 700px 500px at 100% 10%, rgba(0,240,255,0.13), transparent),
@@ -31,7 +40,6 @@
       url('assets/images/rainbg.gif');
     background-position:center;
     background-size:auto, auto, cover, cover;
-    background-attachment:fixed;
     background-repeat:no-repeat;
   }
 
@@ -48,14 +56,7 @@
     mix-blend-mode:overlay;
   }
 
-  /* A subtle terminal-like frame lets the rain sit behind the interface. */
-  body::after{
-    content:"";
-    position:fixed;
-    inset:10px;
-    pointer-events:none;
-    z-index:998;
-  }
+  nav, header, section, footer{ position:relative; z-index:1; }
 
   :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
 
@@ -68,7 +69,7 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
+  nav .wrap{ max-width:none; padding:0 28px; display:flex; align-items:center; justify-content:space-between; height:60px; }
   .logo{ font-family:var(--mono); font-weight:600; font-size:14px; color:var(--amber); letter-spacing:0.02em;}
   .logo .path{ color:var(--text-faint); }
   .navlinks{ display:flex; gap:28px; font-family:var(--mono); font-size:13px; }
@@ -199,8 +200,10 @@
   footer p{ font-family:var(--mono); font-size:12px; color:var(--text-faint); }
 
   @media (max-width:640px){
-    .navlinks{ gap:16px; font-size:11.5px; }
+    nav .wrap{ padding:0 12px; }
+    .logo{ font-size:12px; }
+    .logo .path{ display:none; }
+    .navlinks{ gap:8px; font-size:10px; }
     .hero{ padding:70px 0 60px; }
     section{ padding:50px 0; }
-    body::after{ inset:6px; }
   }
